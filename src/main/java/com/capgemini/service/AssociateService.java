@@ -1,3 +1,4 @@
+
 package com.capgemini.service;
 
 
@@ -15,3 +16,4 @@ public interface AssociateService
 	public Associate updateAssociate(Associate associate) throws AssociateException;
 
 }
+
