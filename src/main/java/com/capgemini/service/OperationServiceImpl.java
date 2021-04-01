@@ -1,8 +1,13 @@
 package com.capgemini.service;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import com.capgemini.entity.AssociateProf;
+
+import com.capgemini.entity.AssociateProf;
+
+
 import com.capgemini.exception.OperationException;
 import com.capgemini.repository.OperationRepository;
 
@@ -12,6 +17,7 @@ public class OperationServiceImpl implements OperationService{
 	private OperationRepository operationRepository;
 
 	@Override
+
 	public Integer addAssociateDetails(AssociateProf associateDetails) throws OperationException 
 	{
 		try 
@@ -45,6 +51,17 @@ public class OperationServiceImpl implements OperationService{
 		{
 			throw new OperationException(exception.getMessage(),exception);
 		}
+
+	public Integer addAssociateDetails(AssociateProf associateProf) throws OperationException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public AssociateProf updateAssociateDetails(AssociateProf associateProf) throws OperationException {
+		// TODO Auto-generated method stub
+		return null;
+
 	}
 
 }
