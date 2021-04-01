@@ -52,16 +52,6 @@ public class OperationServiceImpl implements OperationService{
 			throw new OperationException(exception.getMessage(),exception);
 		}
 
-	public Integer addAssociateDetails(AssociateProf associateProf) throws OperationException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public AssociateProf updateAssociateDetails(AssociateProf associateProf) throws OperationException {
-		// TODO Auto-generated method stub
-		return null;
-
 	}
 
 }

@@ -34,12 +34,8 @@ public class AssociateServiceImpl implements AssociateService{
 			throw new AssociateException(exception.getMessage(),exception);
 		}
 
-	public Integer addAssociate(AssociatePersonal associate) throws AssociateException {
-		// TODO Auto-generated method stub
-		return null;
-
+	
 	}
-
 
 	@Override
 
@@ -59,13 +55,8 @@ public class AssociateServiceImpl implements AssociateService{
 			throw new AssociateException(exception.getMessage(),exception);
 		}
 
-	public AssociatePersonal updateAssociate(AssociatePersonal associate) throws AssociateException {
-		// TODO Auto-generated method stub
-		return null;
-
+	
 	}
-
-
 	@Override
 
 	public AssociatePersonal getAssociateById(Integer id) throws AssociateException 
@@ -92,11 +83,7 @@ public class AssociateServiceImpl implements AssociateService{
 		{
 			throw new AssociateException(exception.getMessage(),exception);
 		}	
-
-	public AssociatePersonal getAssociateById(Integer id) throws AssociateException {
-		// TODO Auto-generated method stub
-		return null;
-
 	}
+	
 
 }
