@@ -11,7 +11,7 @@ public interface AssociateService
 {
 	public Integer addAssociate(Associate associate) throws AssociateException;
 
-	public List<Associate> getAllAssociate() throws AssociateException;
+	public Associate getAssociateById(Integer id) throws AssociateException;
 
 	public Associate updateAssociate(Associate associate) throws AssociateException;
 

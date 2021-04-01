@@ -13,14 +13,16 @@ public class AssociateServiceImpl implements AssociateService{
 		return null;
 	}
 
+	
 	@Override
-	public List<Associate> getAllAssociate() throws AssociateException {
+	public Associate updateAssociate(Associate associate) throws AssociateException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+
 	@Override
-	public Associate updateAssociate(Associate associate) throws AssociateException {
+	public Associate getAssociateById(Integer id) throws AssociateException {
 		// TODO Auto-generated method stub
 		return null;
 	}
