@@ -16,16 +16,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "OperationTeam")
+@Table(name = "AssociateProf")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class OperationTeam {
+public class AssociateProf {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY )
-	@Column( name = "S.no")
-	private Integer sno;
 
 	@OneToOne
 	@JoinColumn
