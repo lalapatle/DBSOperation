@@ -25,7 +25,7 @@ public class OperationException extends Exception
 	@Override
 	public String toString() 
 	{
-		return "OperationException [message=" + message + "]";
+		return "OperationException [message= " + message + "]";
 	}
 
 	public String getMessage()
