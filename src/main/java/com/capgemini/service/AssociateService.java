@@ -12,6 +12,5 @@ public interface AssociateService
 	public AssociatePersonal getAssociateById(Integer id) throws AssociateException;
 
 	public AssociatePersonal updateAssociate(AssociatePersonal associate) throws AssociateException;
-
 }
 

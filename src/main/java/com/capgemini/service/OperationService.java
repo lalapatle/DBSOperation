@@ -10,7 +10,5 @@ public interface OperationService {
 
 	//public List<OperationTeam> getAllAssociateDetails() throws OperationException;
 
-
-
 	public AssociateProf updateAssociateDetails(AssociateProf operationTeam) throws OperationException;
 }
