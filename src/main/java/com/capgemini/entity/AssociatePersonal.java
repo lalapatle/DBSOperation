@@ -25,7 +25,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Associate {
+public class AssociatePersonal {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY )
