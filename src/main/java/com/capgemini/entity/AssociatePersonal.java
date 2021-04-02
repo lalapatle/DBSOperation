@@ -6,12 +6,14 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
+//import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,7 +30,6 @@ import lombok.NoArgsConstructor;
 public class AssociatePersonal {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY )
 	@Column( name = "cg_group_Id")
 	private Integer cgGroupId;
 	
@@ -60,7 +61,7 @@ public class AssociatePersonal {
 	private String cgDBSAccountSupervisor;
 	
 	@Column( name = "dbs_client_lead")
-	private String DBSClientLead;
+	private String dbsClientLead;
 	
 	@Column( name = "tower")
 	private String tower;
@@ -74,32 +75,36 @@ public class AssociatePersonal {
 	@Column( name = "associate_location")
 	private String associateLocation;
 	
+	@JsonFormat(pattern="dd/MM/yyyy")
+//	@Temporal(TemporalType.DATE)
 	@Column( name = "Date_of_joining_dbs_account")
 	private Date dateOfJoiningDBSAccount;
 	
+	@JsonFormat(pattern="dd/MM/yyyy")
+//	@Temporal(TemporalType.DATE)
 	@Column( name = "dbs_billable_start_date")
-	private Date DBSBillableStartDate;
+	private Date dbsBillableStartDate;
 	
 	@Column( name = "bank_Id")
 	private String bankId;
 	
 	@Column( name = "dbs_mail_Id")
-	private String DBSMailId;
+	private String dbsMailId;
 	
 	@Column(name="primary_skill")
 	private String primarySkill;
 	
 	@Column(name="overall_experience_before_cg")
-	private String overallExperienceBeforeJoiningCgString;
+	private String overallExperienceBeforeJoiningCg;
 	
 	@Column(name="sow_number")
-	private String SOWNumber;
+	private String sowNumber;
 	
 	@Column(name="mandatory_training")
 	private String mandatoryTraining;
 	
 	@Column(name="onboarding_docs")
-	private String OnboardingDocs;
+	private String onboardingDocs;
 	
 	@Column(name="pancard")
 	private String panCard;
@@ -107,9 +112,13 @@ public class AssociatePersonal {
 	@Column(name="passport")
 	private String passport;
 	
+	@JsonFormat(pattern="dd/MM/yyyy")
+//	@Temporal(TemporalType.DATE)
 	@Column(name="passport_expiry_date")
 	private Date passportExpiryDate;
 	
+	@JsonFormat(pattern="dd/MM/yyyy")
+//	@Temporal(TemporalType.DATE)
 	@Column(name="date_of_birth")
 	private Date dateOfBirth;
 	
@@ -129,22 +138,26 @@ public class AssociatePersonal {
 	private String permanentAddress;
 	
 	@Column(name="CSB_form")
-	private String CSBForm;
+	private String csbForm;
 	
 	@Column(name="cg_laptop_sl_no")
 	private String cgLaptopSlno;
 	
 	@Column(name="dbs_laptop_sl_no")
-	private String DBSLaptopSlno;
+	private String dbsLaptopSlno;
 	
+	@JsonFormat(pattern="dd/MM/yyyy")
+//	@Temporal(TemporalType.DATE)
 	@Column(name="date_of_laptop_taken")
 	private Date dateOfLaptopTaken;
 	
+	@JsonFormat(pattern="dd/MM/yyyy")
+	@Temporal(TemporalType.DATE)
 	@Column(name="date_of_laptop_return")
 	private Date dateOfLaptopReturn;
 	
 	@Column(name="spoc")
-	private String SPOC;
+	private String spoc;
 
 
 
