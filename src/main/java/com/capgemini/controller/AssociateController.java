@@ -17,10 +17,17 @@ import com.capgemini.entity.AssociatePersonal;
 import com.capgemini.exception.AssociateException;
 import com.capgemini.service.AssociateService;
 
+
+import ch.qos.logback.core.rolling.helper.IntegerTokenConverter;
+import lombok.extern.slf4j.Slf4j;
+
+
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/dbsoApp")
+@Slf4j
 public class AssociateController {
+
 
 	@Autowired
 	private AssociateService associateService;
@@ -107,3 +114,4 @@ public class AssociateController {
 	}
 
 }
+

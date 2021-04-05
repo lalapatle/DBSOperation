@@ -1,11 +1,15 @@
 package com.capgemini.controller;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.List;
 
 import org.apache.commons.math3.geometry.Space;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,9 +26,14 @@ import com.capgemini.exception.AssociateException;
 import com.capgemini.exception.OperationException;
 import com.capgemini.service.OperationService;
 
+import lombok.extern.slf4j.Slf4j;
+
+import com.capgemini.service.OperationService;
+
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/dbsoApp")
+@Slf4j
 public class OperationTeamController {
 
 	@Autowired
