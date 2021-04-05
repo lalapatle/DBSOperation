@@ -26,11 +26,14 @@ import com.capgemini.exception.AssociateException;
 import com.capgemini.exception.OperationException;
 import com.capgemini.service.OperationService;
 
+import lombok.extern.slf4j.Slf4j;
+
 import com.capgemini.service.OperationService;
 
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/dbsoApp")
+@Slf4j
 public class OperationTeamController {
 
 	@Autowired
