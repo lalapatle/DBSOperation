@@ -5,13 +5,14 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
-
-
+import org.springframework.stereotype.Service;
 
 import com.capgemini.entity.AssociatePersonal;
 import com.capgemini.exception.AssociateException;
 import com.capgemini.repository.AssociateRepository;
+import com.fasterxml.jackson.core.sym.Name;
 
+@Service("associateService")
 public class AssociateServiceImpl implements AssociateService{
 
 	@Autowired
@@ -42,9 +43,13 @@ public class AssociateServiceImpl implements AssociateService{
 	public AssociatePersonal updateAssociate(AssociatePersonal associate) throws AssociateException
 	{
 		try 
-		{            
-			AssociatePersonal updatedAssociate= associateRepository.save(associate);    
-			return updatedAssociate;
+		{   
+			AssociatePersonal associate1=associateRepository.getOne(associate.getCgGroupId());
+			if (associate1!=null) {
+				return associateRepository.save(associate1);
+			}else {
+				throw new AssociateException("No record found");
+			}
 		}
 		catch(DataAccessException dataAccessException) 
 		{
