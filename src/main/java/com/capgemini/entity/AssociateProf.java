@@ -19,14 +19,11 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Table(name = "AssociateProf")
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class AssociateProf {
@@ -78,5 +75,4 @@ public class AssociateProf {
 	@JoinColumn( name="cg_group_Id")
 	private AssociatePersonal associatePersonal;
 
-
-}
+	}

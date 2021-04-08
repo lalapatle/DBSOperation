@@ -17,17 +17,14 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 
 
 
 @Entity
 @Table(name = "associate")
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class AssociatePersonal {
@@ -162,6 +159,20 @@ public class AssociatePersonal {
 	@Column(name="spoc")
 	private String spoc;
 
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
