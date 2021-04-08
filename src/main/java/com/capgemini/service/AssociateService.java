@@ -18,4 +18,3 @@ public interface AssociateService
 
 	public AssociatePersonal updateAssociate(AssociatePersonal associate) throws AssociateException;
 }
-

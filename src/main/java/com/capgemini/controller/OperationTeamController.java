@@ -2,11 +2,15 @@ package com.capgemini.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.List;
 
 import org.apache.commons.math3.geometry.Space;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -25,6 +29,7 @@ import com.capgemini.entity.AssociateProf;
 import com.capgemini.exception.AssociateException;
 import com.capgemini.exception.OperationException;
 import com.capgemini.service.OperationService;
+import com.capgemini.util.ExcelGenerator;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -103,6 +108,30 @@ public class OperationTeamController {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,e.getMessage());
 		}
 
+	}
+	
+	//get all
+	//localhost:8080/dbsoApp/generateReport
+	@GetMapping("/generateReport")
+	public ResponseEntity<InputStreamResource> generateReport() throws IOException {
+		List<AssociateProf> associateProfList;
+		try {
+			associateProfList = operationService.getAllAssociateProfDetails();
+			ByteArrayInputStream in = ExcelGenerator.customersToExcel(associateProfList);
+			// return IOUtils.toByteArray(in);
+			
+			HttpHeaders headers = new HttpHeaders();
+	        headers.add("Content-Disposition", "attachment; filename=asociate_details.xlsx");
+			
+			 return ResponseEntity
+		                .ok()
+		                .headers(headers)
+		                .body(new InputStreamResource(in));
+		} catch (OperationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,e.getMessage());
+		}	
 	}
 }
 
