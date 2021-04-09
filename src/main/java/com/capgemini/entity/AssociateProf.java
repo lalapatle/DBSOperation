@@ -41,7 +41,7 @@ public class AssociateProf {
 	@Column( name = "Currency")
 	private String currency;
 
-	@JsonFormat(pattern="dd/MM/yyyy")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd" )
 //	@Temporal(TemporalType.DATE)
 	@Column( name = "LWD_Account")
 	private Date lwdAccount;
@@ -55,12 +55,12 @@ public class AssociateProf {
 	@Column( name = "Bill_rate")
 	private Integer billRate;
 
-	@JsonFormat(pattern="dd/MM/yyyy")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd" )
 //	@Temporal(TemporalType.DATE)
 	@Column( name = "SOW_start")
 	private Date sowStart;
 	
-	@JsonFormat(pattern="dd/MM/yyyy")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd" )
 //	@Temporal(TemporalType.DATE)
 	@Column( name = "SOW_end")
 	private Date sowEnd;

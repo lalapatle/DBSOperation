@@ -1,5 +1,7 @@
 package com.capgemini.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.capgemini.entity.AssociatePersonal;
+import com.capgemini.entity.AssociateProf;
 import com.capgemini.exception.AssociateException;
+import com.capgemini.exception.OperationException;
 import com.capgemini.service.AssociateService;
 
 
@@ -43,7 +47,19 @@ public class AssociateController {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,e.getMessage());
 		}
 	}
-
+	
+	//localhost:8080/dbsoApp/get-personal-details
+	@GetMapping("/get-personal-details")
+	public ResponseEntity<List<AssociatePersonal>> getAllAssociatePersonalDetails(){
+		try {
+			List<AssociatePersonal> associatePerList=associateService.getAllAssociatePersonalDetails();
+			return new ResponseEntity<>(associatePerList,HttpStatus.OK);
+		}
+		catch (AssociateException e) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,e.getMessage());
+		}
+	}
+	
 	//getAssociate by id
 	//localhost:8080/dbsoApp/46056119
 	@GetMapping("/{cgGroupId}")
