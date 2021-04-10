@@ -1,31 +1,32 @@
-2021-04-09 10:24:52,504 INFO com.capgemini.DBSOperation.DbsOperationApplication [restartedMain] Starting DbsOperationApplication using Java 1.8.0-262 on LIN22005921 with PID 2760 (C:\Users\KKAILASS\git\DBSOperation\target\classes started by kkailass in C:\Users\KKAILASS\git\DBSOperation)
-2021-04-09 10:24:52,585 DEBUG com.capgemini.DBSOperation.DbsOperationApplication [restartedMain] Running with Spring Boot v2.4.4, Spring v5.3.5
-2021-04-09 10:24:52,587 INFO com.capgemini.DBSOperation.DbsOperationApplication [restartedMain] No active profile set, falling back to default profiles: default
-2021-04-09 10:24:53,054 INFO org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2021-04-09 10:24:53,056 INFO org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2021-04-09 10:24:55,782 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-04-09 10:24:56,100 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 208 ms. Found 2 JPA repository interfaces.
-2021-04-09 10:25:00,455 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
-2021-04-09 10:25:00,499 INFO org.apache.coyote.http11.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
-2021-04-09 10:25:00,501 INFO org.apache.catalina.core.StandardService [restartedMain] Starting service [Tomcat]
-2021-04-09 10:25:00,502 INFO org.apache.catalina.core.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.44]
-2021-04-09 10:25:00,840 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [restartedMain] Initializing Spring embedded WebApplicationContext
-2021-04-09 10:25:00,840 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 7782 ms
-2021-04-09 10:25:02,630 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-04-09 10:25:02,893 INFO org.hibernate.Version [restartedMain] HHH000412: Hibernate ORM core version 5.4.29.Final
-2021-04-09 10:25:03,637 INFO org.hibernate.annotations.common.Version [restartedMain] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2021-04-09 10:25:04,198 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Starting...
-2021-04-09 10:25:05,909 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
-2021-04-09 10:25:06,286 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
-2021-04-09 10:25:12,083 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-04-09 10:25:12,121 INFO org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-04-09 10:25:12,181 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
-2021-04-09 10:25:14,759 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-04-09 10:25:15,247 INFO org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor [restartedMain] Initializing ExecutorService 'applicationTaskExecutor'
-2021-04-09 10:25:16,672 INFO org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver [restartedMain] Exposing 2 endpoint(s) beneath base path '/actuator'
-2021-04-09 10:25:16,732 INFO org.apache.coyote.http11.Http11NioProtocol [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
-2021-04-09 10:25:16,856 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
-2021-04-09 10:25:16,914 INFO com.capgemini.DBSOperation.DbsOperationApplication [restartedMain] Started DbsOperationApplication in 25.98 seconds (JVM running for 28.723)
-2021-04-09 10:27:08,336 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
-2021-04-09 10:27:08,342 INFO org.springframework.web.servlet.DispatcherServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
-2021-04-09 10:27:08,437 INFO org.springframework.web.servlet.DispatcherServlet [http-nio-8080-exec-2] Completed initialization in 95 ms
+2021-04-10 12:47:43,544 WARN com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=19h16m20s412ms998µs900ns).
+2021-04-10 14:14:47,269 WARN com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=23m1s859ms800µs900ns).
+2021-04-10 15:08:21,596 WARN com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=39m3s802ms157µs300ns).
+2021-04-10 18:49:57,295 INFO org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor [Thread-8] Shutting down ExecutorService 'applicationTaskExecutor'
+2021-04-10 18:49:57,319 INFO org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [Thread-8] Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-04-10 18:49:57,415 INFO com.zaxxer.hikari.HikariDataSource [Thread-8] HikariPool-1 - Shutdown initiated...
+2021-04-10 18:49:57,458 INFO com.zaxxer.hikari.HikariDataSource [Thread-8] HikariPool-1 - Shutdown completed.
+2021-04-10 18:49:58,935 INFO com.capgemini.DBSOperation.DbsOperationApplication [restartedMain] Starting DbsOperationApplication using Java 1.8.0_282 on LIN22005819 with PID 17656 (C:\Users\LKRISHAN\OneDrive - Capgemini\Desktop\Project\DBSOperation\target\classes started by lkrishan in C:\Users\LKRISHAN\OneDrive - Capgemini\Desktop\Project\DBSOperation)
+2021-04-10 18:49:58,936 DEBUG com.capgemini.DBSOperation.DbsOperationApplication [restartedMain] Running with Spring Boot v2.4.4, Spring v5.3.5
+2021-04-10 18:49:58,936 INFO com.capgemini.DBSOperation.DbsOperationApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-04-10 18:50:00,064 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-04-10 18:50:00,137 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 72 ms. Found 2 JPA repository interfaces.
+2021-04-10 18:50:01,307 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-04-10 18:50:01,309 INFO org.apache.coyote.http11.Http11NioProtocol [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-04-10 18:50:01,310 INFO org.apache.catalina.core.StandardService [restartedMain] Starting service [Tomcat]
+2021-04-10 18:50:01,311 INFO org.apache.catalina.core.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.44]
+2021-04-10 18:50:01,368 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-04-10 18:50:01,369 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2420 ms
+2021-04-10 18:50:01,561 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-04-10 18:50:01,578 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-2 - Starting...
+2021-04-10 18:50:01,870 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-2 - Start completed.
+2021-04-10 18:50:01,871 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2021-04-10 18:50:02,305 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-04-10 18:50:02,306 INFO org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-04-10 18:50:02,344 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-04-10 18:50:02,711 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-04-10 18:50:02,935 INFO org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor [restartedMain] Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-10 18:50:03,316 INFO org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver [restartedMain] Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-04-10 18:50:03,368 INFO org.apache.coyote.http11.Http11NioProtocol [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-04-10 18:50:03,389 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-04-10 18:50:03,414 INFO com.capgemini.DBSOperation.DbsOperationApplication [restartedMain] Started DbsOperationApplication in 4.633 seconds (JVM running for 107000.468)
+2021-04-10 18:50:03,421 INFO org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged

@@ -75,12 +75,12 @@ public class AssociatePersonal {
 	@Column( name = "associate_location")
 	private String associateLocation;
 	
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy" )
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd" )
 //	@Temporal(TemporalType.DATE)
 	@Column( name = "Date_of_joining_dbs_account")
 	private Date dateOfJoiningDBSAccount;
 	
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy" )
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd" )
 //	@Temporal(TemporalType.DATE)
 	@Column( name = "dbs_billable_start_date")
 	private Date dbsBillableStartDate;
