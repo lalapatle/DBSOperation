@@ -19,6 +19,8 @@ public interface OperationService {
 	public AssociateProf getAssociateProfById(Integer sNo) throws OperationException;
 
 	public AssociateProf updateAssociateProfDetails(AssociateProf associateProf) throws OperationException;
+	
+	public Integer deleteAssociateData(Integer sNo) throws OperationException;
 
 
 }

@@ -102,4 +102,17 @@ public class OperationServiceImpl implements OperationService{
 		}
 	}
 
+	@Override
+	public Integer deleteAssociateData(Integer sNo) throws OperationException {
+		try {
+			AssociateProf associateProf=operationRepository.findById(sNo).get();
+			operationRepository.deleteById(associateProf.getSNo());
+			return sNo;
+		}
+		catch(Exception exception) {
+			throw new OperationException(exception.getMessage(),exception);
+		}
+		
+	}
+
 }
