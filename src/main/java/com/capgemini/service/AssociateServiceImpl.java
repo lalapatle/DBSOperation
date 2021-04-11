@@ -1,6 +1,7 @@
 package com.capgemini.service;
 
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,9 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.capgemini.entity.AssociatePersonal;
+import com.capgemini.entity.AssociateProf;
 import com.capgemini.exception.AssociateException;
+import com.capgemini.exception.OperationException;
 import com.capgemini.repository.AssociateRepository;
 import com.fasterxml.jackson.core.sym.Name;
 
@@ -88,6 +91,23 @@ public class AssociateServiceImpl implements AssociateService{
 		{
 			throw new AssociateException(exception.getMessage(),exception);
 		}	
+	}
+
+	@Override
+	public List<AssociatePersonal> getAllAssociatePersonalDetails() throws AssociateException {
+		try 
+		{            
+			List<AssociatePersonal> associatePerList=associateRepository.findAll();
+			return associatePerList;
+		}
+		catch(DataAccessException dataAccessException) 
+		{
+			throw new AssociateException(dataAccessException.getMessage(),dataAccessException);
+		}
+		catch(Exception exception)
+		{
+			throw new AssociateException(exception.getMessage(),exception);
+		}
 	}
 	
 

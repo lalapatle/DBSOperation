@@ -75,12 +75,12 @@ public class AssociatePersonal {
 	@Column( name = "associate_location")
 	private String associateLocation;
 	
-	@JsonFormat(pattern="dd/MM/yyyy")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd" )
 //	@Temporal(TemporalType.DATE)
 	@Column( name = "Date_of_joining_dbs_account")
 	private Date dateOfJoiningDBSAccount;
 	
-	@JsonFormat(pattern="dd/MM/yyyy")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd" )
 //	@Temporal(TemporalType.DATE)
 	@Column( name = "dbs_billable_start_date")
 	private Date dbsBillableStartDate;
@@ -112,12 +112,12 @@ public class AssociatePersonal {
 	@Column(name="passport")
 	private String passport;
 	
-	@JsonFormat(pattern="dd/MM/yyyy")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd" )
 //	@Temporal(TemporalType.DATE)
 	@Column(name="passport_expiry_date")
 	private Date passportExpiryDate;
 	
-	@JsonFormat(pattern="dd/MM/yyyy")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd" )
 //	@Temporal(TemporalType.DATE)
 	@Column(name="date_of_birth")
 	private Date dateOfBirth;
@@ -146,12 +146,12 @@ public class AssociatePersonal {
 	@Column(name="dbs_laptop_sl_no")
 	private String dbsLaptopSlno;
 	
-	@JsonFormat(pattern="dd/MM/yyyy")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd" )
 //	@Temporal(TemporalType.DATE)
 	@Column(name="date_of_laptop_taken")
 	private Date dateOfLaptopTaken;
 	
-	@JsonFormat(pattern="dd/MM/yyyy")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd" )
 	@Temporal(TemporalType.DATE)
 	@Column(name="date_of_laptop_return")
 	private Date dateOfLaptopReturn;
