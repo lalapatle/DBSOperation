@@ -147,5 +147,19 @@ public class OperationTeamController {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,operationException.getMessage());
 		}
 	}
+	
+	//get associatre professional by id
+		//localhost:8080/dbsoApp/get-professional-by-cgGroupId/46003201
+		@GetMapping("/get-professional-by-cgGroupId/{cgGroupId}")
+		public ResponseEntity<AssociateProf> getAssociateProfessionalDetailsByCgGroupId(@PathVariable Integer cgGroupId){
+			try {
+				AssociateProf associateProf=operationService.getAssociateProfByCgGroupId(cgGroupId);
+				return new ResponseEntity<>(associateProf,HttpStatus.OK);
+			}
+			catch (OperationException e) {
+				throw new ResponseStatusException(HttpStatus.BAD_REQUEST,e.getMessage());
+			}
+
+		}
 }
 

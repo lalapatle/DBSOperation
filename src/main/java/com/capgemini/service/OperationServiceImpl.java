@@ -115,4 +115,22 @@ public class OperationServiceImpl implements OperationService{
 		
 	}
 
+	@Override
+	public AssociateProf getAssociateProfByCgGroupId(Integer cgGroupId) throws OperationException {
+		try 
+		{     
+			AssociatePersonal associatePersonal=associateRepository.findById(cgGroupId).get();
+			AssociateProf associateProf=operationRepository.findByAssociatePersonal(associatePersonal).get(0);
+			return associateProf;
+		}
+		catch(DataAccessException dataAccessException) 
+		{
+			throw new OperationException(dataAccessException.getMessage(),dataAccessException);
+		}
+		catch(Exception exception)
+		{
+			throw new OperationException(exception.getMessage(),exception);
+		}
+	}
+
 }
