@@ -23,4 +23,7 @@ public interface OperationService {
 	public Integer deleteAssociateData(Integer sNo) throws OperationException;
 
 
+	public AssociateProf getAssociateProfByCgGroupId(Integer cgGroupId) throws OperationException;
+
+
 }
