@@ -159,7 +159,8 @@ public class AssociatePersonal {
 	@Column(name="spoc")
 	private String spoc;
 
-
+	
+	
 
 
 
