@@ -45,13 +45,12 @@ public class LoginController {
 		}
 	}
 
-	//localhost:8080/dbsoApp/get-details-by-id/46003201
-	@GetMapping("get-details-by-id/{cgGroupId}")
-	public ResponseEntity<AssociatePersonal> getDetailsById(@PathVariable Integer cgGroupId) {
+	@GetMapping("/{cgGroupId}")
+	public ResponseEntity<AssociatePersonal> getDetailsById(@PathVariable Integer cgGroupId) throws AssociateException {
 		try {
 			AssociatePersonal associatePersonal=loginService.getAssociateById(cgGroupId);
 			if(associatePersonal==null) {
-				throw new LoginException("No record found for given id");
+				throw new AssociateException("No record found for given id");
 			}
 			return new ResponseEntity<AssociatePersonal>(associatePersonal,HttpStatus.OK);
 
