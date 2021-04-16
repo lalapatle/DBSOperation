@@ -7,8 +7,8 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.capgemini.entity.AssociatePersonal;
+import com.capgemini.entity.ChangePassword;
 import com.capgemini.entity.Login;
-import com.capgemini.exception.AssociateException;
 import com.capgemini.exception.LoginException;
 import com.capgemini.repository.AssociateRepository;
 import com.capgemini.repository.LoginRepository;
@@ -84,5 +84,26 @@ public class LoginServiceImpl implements LoginService{
 		}	
 	}
 	
+	@Override
+	public String changePassword(ChangePassword changePassword) throws LoginException {
+		String str = null;
+		Optional<Login> loginObj = loginRepo.findById(changePassword.getCgGroupId());
+		if (!loginObj.isPresent()) {
+			throw new LoginException("USER NOT FOUND");
+		} else {
+			String pwd = loginObj.get().getPassword();
+			if (!pwd.equals(changePassword.getOldPassword())) {
+				throw new LoginException("WRONG PASSWORD");
+			}
+			try {
+				loginObj.get().setPassword(changePassword.getNewPassword());
+				loginRepo.saveAndFlush(loginObj.get());
+				str = "Password changed sucessfully";
+			} catch (Exception e) {
+				throw new LoginException("OPERATION FAILED");
+			}
+		}
+		return str;
+	}
 
 }
