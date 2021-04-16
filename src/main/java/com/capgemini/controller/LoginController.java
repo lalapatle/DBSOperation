@@ -1,5 +1,7 @@
 package com.capgemini.controller;
 
+import javax.mail.MessagingException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.capgemini.entity.AssociatePersonal;
 import com.capgemini.entity.ChangePassword;
 import com.capgemini.entity.Login;
 import com.capgemini.exception.LoginException;
@@ -40,21 +41,23 @@ public class LoginController
 		}
 	}
 
-	//localhost:8080/dbsoApp/get-details-by-id/46003201
-	@GetMapping("get-details-by-id/{cgGroupId}")
-	public ResponseEntity<AssociatePersonal> getDetailsById(@PathVariable Integer cgGroupId) {
+	//localhost:8080/dbsoApp/get-credentials-by-id/46003201
+	@GetMapping("get-credentials-by-id/{cgGroupId}")
+	public ResponseEntity<Login> getDetailsById(@PathVariable Integer cgGroupId) throws MessagingException {
 		try {
-			AssociatePersonal associatePersonal=loginService.getAssociateById(cgGroupId);
-			if(associatePersonal==null) {
+			Login login=loginService.getAssociateById(cgGroupId);
+//			loginService.sendCredentialMail(login);
+			if(login==null) {
 				throw new LoginException("No record found for given id");
 			}
-			return new ResponseEntity<AssociatePersonal>(associatePersonal,HttpStatus.OK);
+			return new ResponseEntity<Login>(login,HttpStatus.OK);
 
 		} catch (LoginException e) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,e.getMessage());
 		}
 	}
 	
+
 	//localhost:8080/dbsoApp/reset
 	@PostMapping("/reset")
 	public ResponseEntity<?> changePassword( @RequestBody ChangePassword changePassword) throws LoginException {
@@ -68,4 +71,5 @@ public class LoginController
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,e.getMessage());
 		}
 	}
+
 }

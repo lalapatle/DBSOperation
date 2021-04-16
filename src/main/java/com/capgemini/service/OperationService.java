@@ -10,9 +10,7 @@ import com.capgemini.exception.OperationException;
 public interface OperationService {
 
 
-
 	public Integer addAssociateProfDetails( Integer cgGroupId,AssociateProf associateProf) throws OperationException;
-
 
 	public List<AssociateProf> getAllAssociateProfDetails() throws OperationException;
 

@@ -1,5 +1,7 @@
 package com.capgemini.controller;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.capgemini.entity.AssociatePersonal;
-import com.capgemini.entity.AssociateProf;
 import com.capgemini.exception.AssociateException;
-import com.capgemini.exception.OperationException;
 import com.capgemini.service.AssociateService;
 
-
-import ch.qos.logback.core.rolling.helper.IntegerTokenConverter;
 import lombok.extern.slf4j.Slf4j;
 
 
@@ -82,7 +80,10 @@ public class AssociateController {
 	public ResponseEntity<AssociatePersonal> updateAssociatePersonalDetails(@PathVariable Integer cgGroupId,
 			@RequestBody AssociatePersonal associatePersonal){
 		try {
+			
+			
 			AssociatePersonal ap=associateService.getAssociateById(cgGroupId);
+			
 			ap.setAssociateFullName(associatePersonal.getAssociateFullName());
 			ap.setGender(associatePersonal.getGender());
 			ap.setCgUserName(associatePersonal.getCgUserName());
@@ -98,11 +99,19 @@ public class AssociateController {
 			ap.setReasonResignation(associatePersonal.getReasonResignation());
 			ap.setAssociateLocation(associatePersonal.getAssociateLocation());
 			ap.setDateOfJoiningDBSAccount(associatePersonal.getDateOfJoiningDBSAccount());
+			ap.setDateOfJoiningCGCompany(associatePersonal.getDateOfJoiningCGCompany());
 			ap.setDbsBillableStartDate(associatePersonal.getDbsBillableStartDate());
 			ap.setBankId(associatePersonal.getBankId());
 			ap.setDbsMailId(associatePersonal.getDbsMailId());
 			ap.setPrimarySkill(associatePersonal.getPrimarySkill());
 			ap.setOverallExperienceBeforeJoiningCg(associatePersonal.getOverallExperienceBeforeJoiningCg());
+//			ap.setTotalExperience(associatePersonal.getTotalExperience());
+			//Update Experience
+			LocalDate doj= associatePersonal.getDateOfJoiningCGCompany();
+			LocalDate currentDate = LocalDate.now();
+			int overall= (associatePersonal.getOverallExperienceBeforeJoiningCg());
+			
+			ap.setTotalExperience((Period.between(doj,currentDate).getMonths())+ overall);
 			ap.setSowNumber(associatePersonal.getSowNumber());
 			ap.setMandatoryTraining(associatePersonal.getMandatoryTraining());
 			ap.setOnboardingDocs(associatePersonal.getOnboardingDocs());
