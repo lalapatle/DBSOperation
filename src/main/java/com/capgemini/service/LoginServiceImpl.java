@@ -11,6 +11,10 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+
+import com.capgemini.entity.AssociatePersonal;
+import com.capgemini.entity.ChangePassword;
+
 import com.capgemini.entity.Login;
 import com.capgemini.exception.LoginException;
 import com.capgemini.repository.AssociateRepository;
@@ -83,6 +87,7 @@ public class LoginServiceImpl implements LoginService{
 		}	
 	}
 	
+
 //	@Override
 //	public void sendCredentialMail(Login user) throws MessagingException {
 //		String subject="TLTA CREDENTIALS";
@@ -99,5 +104,28 @@ public class LoginServiceImpl implements LoginService{
 //		mailSender.send(message);
 //	}
 	
+
+	@Override
+	public String changePassword(ChangePassword changePassword) throws LoginException {
+		String str = null;
+		Optional<Login> loginObj = loginRepo.findById(changePassword.getCgGroupId());
+		if (!loginObj.isPresent()) {
+			throw new LoginException("USER NOT FOUND");
+		} else {
+			String pwd = loginObj.get().getPassword();
+			if (!pwd.equals(changePassword.getOldPassword())) {
+				throw new LoginException("WRONG PASSWORD");
+			}
+			try {
+				loginObj.get().setPassword(changePassword.getNewPassword());
+				loginRepo.saveAndFlush(loginObj.get());
+				str = "Password changed sucessfully";
+			} catch (Exception e) {
+				throw new LoginException("OPERATION FAILED");
+			}
+		}
+		return str;
+	}
+
 
 }
