@@ -1,8 +1,7 @@
 package com.capgemini.entity;
 
+import java.time.LocalDate;
 import java.util.Date;
-
-
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -76,12 +75,14 @@ public class AssociatePersonal {
 	private String associateLocation;
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd" )
-//	@Temporal(TemporalType.DATE)
 	@Column( name = "Date_of_joining_dbs_account")
 	private Date dateOfJoiningDBSAccount;
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd" )
-//	@Temporal(TemporalType.DATE)
+	@Column( name = "Date_of_joining_cg_company")
+	private LocalDate dateOfJoiningCGCompany;
+	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd" )
 	@Column( name = "dbs_billable_start_date")
 	private Date dbsBillableStartDate;
 	
@@ -95,7 +96,10 @@ public class AssociatePersonal {
 	private String primarySkill;
 	
 	@Column(name="overall_experience_before_cg")
-	private String overallExperienceBeforeJoiningCg;
+	private Integer overallExperienceBeforeJoiningCg;
+	
+	@Column(name="overall_experience")
+	private Integer totalExperience;
 	
 	@Column(name="sow_number")
 	private String sowNumber;

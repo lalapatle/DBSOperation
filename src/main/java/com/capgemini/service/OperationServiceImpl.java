@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import com.capgemini.entity.AssociatePersonal;
 import com.capgemini.entity.AssociateProf;
-
 import com.capgemini.exception.OperationException;
 import com.capgemini.repository.AssociateRepository;
 import com.capgemini.repository.OperationRepository;

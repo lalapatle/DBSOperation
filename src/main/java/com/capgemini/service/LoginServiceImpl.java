@@ -2,19 +2,11 @@ package com.capgemini.service;
 
 import java.util.Optional;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
-
-import com.capgemini.entity.AssociatePersonal;
 import com.capgemini.entity.ChangePassword;
-
 import com.capgemini.entity.Login;
 import com.capgemini.exception.LoginException;
 import com.capgemini.repository.AssociateRepository;

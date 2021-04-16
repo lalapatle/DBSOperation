@@ -1,6 +1,6 @@
 package com.capgemini.service;
-
-
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,11 +9,8 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.capgemini.entity.AssociatePersonal;
-import com.capgemini.entity.AssociateProf;
 import com.capgemini.exception.AssociateException;
-import com.capgemini.exception.OperationException;
 import com.capgemini.repository.AssociateRepository;
-import com.fasterxml.jackson.core.sym.Name;
 
 @Service("associateService")
 public class AssociateServiceImpl implements AssociateService{
@@ -26,6 +23,12 @@ public class AssociateServiceImpl implements AssociateService{
 	{
 		try 
 		{
+			LocalDate doj= associate.getDateOfJoiningCGCompany();
+			LocalDate currentDate = LocalDate.now();
+			
+		
+			int overall= (associate.getOverallExperienceBeforeJoiningCg());
+			associate.setTotalExperience((Period.between(doj,currentDate).getMonths())+ overall);
 			associateRepository.save(associate);
 			return 1;
 		}
@@ -49,6 +52,7 @@ public class AssociateServiceImpl implements AssociateService{
 		{   
 			AssociatePersonal associate1=associateRepository.getOne(associate.getCgGroupId());
 			if (associate1!=null) {
+				
 				return associateRepository.save(associate1);
 			}else {
 				throw new AssociateException("No record found");
