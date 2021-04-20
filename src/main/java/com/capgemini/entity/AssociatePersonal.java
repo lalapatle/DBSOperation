@@ -113,8 +113,24 @@ public class AssociatePersonal {
 	@Column(name="pancard")
 	private String panCard;
 	
+//	@Column(name="passport")
+//	private String passport;
+	
+	@Column
+	private byte[] file;
+	
+	@Column
+	private String fileName;
+	
+	
 	@Column(name="passport")
 	private String passport;
+	
+	@Column
+	private byte[] file1;
+	
+	@Column
+	private String fileName1;
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd" )
 //	@Temporal(TemporalType.DATE)
@@ -164,17 +180,17 @@ public class AssociatePersonal {
 	private String spoc;
 
 
-
-
-
-
-
-
-
-
-
-
-
+	@Column
+	private byte[] cvr;
+	
+	@Column
+	private String cvresume;
+ 
+	public AssociatePersonal(byte[] bytes) {
+		this.file=bytes;
+		this.file1=bytes;
+		this.cvr=bytes;
+	}
 
 
 

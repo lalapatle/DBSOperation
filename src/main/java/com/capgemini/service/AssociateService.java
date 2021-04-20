@@ -4,6 +4,8 @@ package com.capgemini.service;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.capgemini.entity.AssociatePersonal;
 
 import com.capgemini.exception.AssociateException;
@@ -21,4 +23,30 @@ public interface AssociateService
 
 
 	public AssociatePersonal updateAssociate(AssociatePersonal associate) throws AssociateException;
+	
+	
+	//For pancard
+	public boolean uploadFile(MultipartFile file,Integer cgGroupId) throws AssociateException;
+	
+	public byte[] getFileById(Integer cgGroupId) throws AssociateException;;
+	
+	public String getFileNameById(Integer cgGroupId) throws AssociateException;
+	
+	
+	//for passport
+    public boolean uploadFile1(MultipartFile file1,Integer cgGroupId) throws AssociateException;
+	
+	public byte[] getFileById1(Integer cgGroupId) throws AssociateException;;
+	
+	public String getFileNameById1(Integer cgGroupId) throws AssociateException;
+	
+	
+	//For CV
+	public boolean uploadCv(MultipartFile cvr,Integer cgGroupId) throws AssociateException;
+	
+	public byte[] getFileById2(Integer cgGroupId) throws AssociateException;;
+	
+	public String getFileNameById2(Integer cgGroupId) throws AssociateException;
+
+
 }
