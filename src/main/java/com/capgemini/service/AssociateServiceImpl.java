@@ -1,4 +1,5 @@
 package com.capgemini.service;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
@@ -7,6 +8,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.capgemini.entity.AssociatePersonal;
 import com.capgemini.exception.AssociateException;
@@ -113,6 +116,149 @@ public class AssociateServiceImpl implements AssociateService{
 			throw new AssociateException(exception.getMessage(),exception);
 		}
 	}
+	
+	@Override
+	public boolean uploadFile(MultipartFile file, Integer cgGroupId) throws AssociateException {
+		
+		boolean isUpload=false;
+
+		try {
+			AssociatePersonal associatePersonal = associateRepository.findById(cgGroupId).get();
+			String fileName=StringUtils.cleanPath(file.getOriginalFilename());
+	        associatePersonal.setFile(file.getBytes());
+			associatePersonal.setFileName(fileName);
+			associateRepository.save(associatePersonal);
+			isUpload=true;
+			
+	        }
+		catch(DataAccessException | IOException e)
+		{
+			throw new AssociateException(e.getMessage(),e);
+		}
+		return isUpload;
+	}
+
+	@Override
+	public byte[] getFileById(Integer cgGroupId) throws AssociateException {
+		
+		try {
+			AssociatePersonal associatePersonal = associateRepository.findById(cgGroupId).get();
+			return associatePersonal.getFile();
+	        }
+		catch(DataAccessException e)
+		{
+			throw new AssociateException(e.getMessage(),e);
+		}
+	}
+
+	@Override
+	public String getFileNameById(Integer cgGroupId) throws AssociateException {
+		
+		try {
+			AssociatePersonal associatePersonal = associateRepository.findById(cgGroupId).get();
+			return associatePersonal.getFileName();
+	        }
+		catch(DataAccessException e)
+		{
+			throw new AssociateException(e.getMessage(),e);
+		}
+	}
+
+	@Override
+	public boolean uploadFile1(MultipartFile file1, Integer cgGroupId) throws AssociateException {
+		
+		boolean isUpload=false;
+		
+			try {
+				AssociatePersonal associatePersonal = associateRepository.findById(cgGroupId).get();
+				String fileName=StringUtils.cleanPath(file1.getOriginalFilename());
+		        associatePersonal.setFile1(file1.getBytes());
+				associatePersonal.setFileName1(fileName);
+				associateRepository.save(associatePersonal);
+				isUpload=true;
+				
+		        }
+			catch(DataAccessException | IOException e)
+			{
+				throw new AssociateException(e.getMessage(),e);
+			}
+			return isUpload;
+	}
+
+	@Override
+	public byte[] getFileById1(Integer cgGroupId) throws AssociateException {
+		
+		try {
+			AssociatePersonal associatePersonal = associateRepository.findById(cgGroupId).get();
+			return associatePersonal.getFile1();
+	        }
+		catch(DataAccessException e)
+		{
+			throw new AssociateException(e.getMessage(),e);
+		}
+	}
+
+	@Override
+	public String getFileNameById1(Integer cgGroupId) throws AssociateException {
+		
+		try {
+			AssociatePersonal associatePersonal = associateRepository.findById(cgGroupId).get();
+			return associatePersonal.getFileName1();
+	        }
+		catch(DataAccessException e)
+		{
+			throw new AssociateException(e.getMessage(),e);
+		}
+	}
+	
+	
+	@Override
+	public boolean uploadCv(MultipartFile cvr, Integer cgGroupId) throws AssociateException {
+		
+		boolean isUpload=false;
+		
+			try {
+				AssociatePersonal associatePersonal = associateRepository.findById(cgGroupId).get();
+				String fileName=StringUtils.cleanPath(cvr.getOriginalFilename());
+		        associatePersonal.setCvr(cvr.getBytes());
+				associatePersonal.setCvresume(fileName);
+				associateRepository.save(associatePersonal);
+				isUpload=true;
+				
+		        }
+			catch(DataAccessException | IOException e)
+			{
+				throw new AssociateException(e.getMessage(),e);
+			}
+			return isUpload;
+	}
+
+	@Override
+	public byte[] getFileById2(Integer cgGroupId) throws AssociateException {
+
+		try {
+			AssociatePersonal associatePersonal = associateRepository.findById(cgGroupId).get();
+			return associatePersonal.getCvr();
+	        }
+		catch(DataAccessException e)
+		{
+			throw new AssociateException(e.getMessage(),e);
+		}
+	}
+
+	@Override
+	public String getFileNameById2(Integer cgGroupId) throws AssociateException {
+	
+		try {
+			AssociatePersonal associatePersonal = associateRepository.findById(cgGroupId).get();
+			return associatePersonal.getCvresume();
+	        }
+		catch(DataAccessException e)
+		{
+			throw new AssociateException(e.getMessage(),e);
+		}
+	}
+	
 	
 
 }
