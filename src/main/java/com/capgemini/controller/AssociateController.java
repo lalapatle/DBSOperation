@@ -1,9 +1,14 @@
 package com.capgemini.controller;
 
+import java.net.URLConnection;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,17 +17,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.capgemini.entity.AssociatePersonal;
-import com.capgemini.entity.AssociateProf;
 import com.capgemini.exception.AssociateException;
-import com.capgemini.exception.OperationException;
 import com.capgemini.service.AssociateService;
 
-
-import ch.qos.logback.core.rolling.helper.IntegerTokenConverter;
 import lombok.extern.slf4j.Slf4j;
 
 
@@ -82,7 +86,10 @@ public class AssociateController {
 	public ResponseEntity<AssociatePersonal> updateAssociatePersonalDetails(@PathVariable Integer cgGroupId,
 			@RequestBody AssociatePersonal associatePersonal){
 		try {
+			
+			
 			AssociatePersonal ap=associateService.getAssociateById(cgGroupId);
+			
 			ap.setAssociateFullName(associatePersonal.getAssociateFullName());
 			ap.setGender(associatePersonal.getGender());
 			ap.setCgUserName(associatePersonal.getCgUserName());
@@ -98,11 +105,19 @@ public class AssociateController {
 			ap.setReasonResignation(associatePersonal.getReasonResignation());
 			ap.setAssociateLocation(associatePersonal.getAssociateLocation());
 			ap.setDateOfJoiningDBSAccount(associatePersonal.getDateOfJoiningDBSAccount());
+			ap.setDateOfJoiningCGCompany(associatePersonal.getDateOfJoiningCGCompany());
 			ap.setDbsBillableStartDate(associatePersonal.getDbsBillableStartDate());
 			ap.setBankId(associatePersonal.getBankId());
 			ap.setDbsMailId(associatePersonal.getDbsMailId());
 			ap.setPrimarySkill(associatePersonal.getPrimarySkill());
 			ap.setOverallExperienceBeforeJoiningCg(associatePersonal.getOverallExperienceBeforeJoiningCg());
+//			ap.setTotalExperience(associatePersonal.getTotalExperience());
+			//Update Experience
+			LocalDate doj= associatePersonal.getDateOfJoiningCGCompany();
+			LocalDate currentDate = LocalDate.now();
+			int overall= (associatePersonal.getOverallExperienceBeforeJoiningCg());
+			
+			ap.setTotalExperience((Period.between(doj,currentDate).getMonths())+ overall);
 			ap.setSowNumber(associatePersonal.getSowNumber());
 			ap.setMandatoryTraining(associatePersonal.getMandatoryTraining());
 			ap.setOnboardingDocs(associatePersonal.getOnboardingDocs());
@@ -125,6 +140,114 @@ public class AssociateController {
 			return new ResponseEntity<AssociatePersonal>(associateService.updateAssociate(ap),HttpStatus.OK);
 		}
 		catch (AssociateException e) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,e.getMessage());
+		}
+	}
+
+	@PutMapping("/upload-pancard/{cgGroupId}")
+    public String UploadFile(@RequestPart("file") MultipartFile file, @PathVariable Integer cgGroupId)
+	{
+		try{
+			boolean isUpload=associateService.uploadFile(file,cgGroupId);
+			if(isUpload) {
+				String fileDownloadUri=ServletUriComponentsBuilder.fromCurrentContextPath().path("dbsoApp/file/download-pancard/" + cgGroupId).toUriString();
+				return fileDownloadUri;
+			}
+			else
+				return "Colud not upload file!";
+		}
+		catch(AssociateException e) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,e.getMessage());
+		}
+		
+	}
+	
+	
+	@GetMapping("/file/download-pancard/{cgGroupId}")
+	public ResponseEntity downloadFromDB(@PathVariable Integer cgGroupId) {
+		try {
+			String fileName=associateService.getFileNameById(cgGroupId);
+			String type=URLConnection.guessContentTypeFromName(fileName);
+			byte[] file=associateService.getFileById(cgGroupId);
+			return ResponseEntity.ok()
+					.contentType(MediaType.parseMediaType(type))
+					.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; fileName=\""+fileName+"\"")
+					.body(file);
+		}catch(AssociateException e) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,e.getMessage());
+		}
+	}
+	
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	@PutMapping("/uploadfile1/{cgGroupId}")
+    public String UploadFile1(@RequestPart("file") MultipartFile file1, @PathVariable Integer cgGroupId)
+	{
+		try{
+			boolean isUpload=associateService.uploadFile1(file1,cgGroupId);
+			if(isUpload) {
+				String fileDownloadUri=ServletUriComponentsBuilder.fromCurrentContextPath().path("dbsoApp/file1/download1/" + cgGroupId).toUriString();
+				return fileDownloadUri;
+			}
+			else
+				return "Colud not upload file!";
+		}
+		catch(AssociateException e) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,e.getMessage());
+		}
+		
+	}
+	
+	@GetMapping("/file1/download1/{cgGroupId}")
+	public ResponseEntity downloadFromDB1(@PathVariable Integer cgGroupId) {
+		try {
+			String fileName1=associateService.getFileNameById1(cgGroupId);
+			String type=URLConnection.guessContentTypeFromName(fileName1);
+			byte[] file=associateService.getFileById1(cgGroupId);
+			return ResponseEntity.ok()
+					.contentType(MediaType.parseMediaType(type))
+					.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; fileName=\""+fileName1+"\"")
+					.body(file);
+		}catch(AssociateException e) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,e.getMessage());
+		}
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
+	@PutMapping("/upload-cv/{cgGroupId}")
+    public String UploadCv(@RequestPart("file") MultipartFile cvr, @PathVariable Integer cgGroupId)
+	{
+		try{
+			boolean isUpload=associateService.uploadCv(cvr,cgGroupId);
+			if(isUpload) {
+				String fileDownloadUri=ServletUriComponentsBuilder.fromCurrentContextPath().path("dbsoApp/cvr/downloadCv/" + cgGroupId).toUriString();
+				return fileDownloadUri;
+			}
+			else
+				return "Colud not upload file!";
+		}
+		catch(AssociateException e) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,e.getMessage());
+		}
+		
+	}
+	
+	@GetMapping("/cvr/downloadCv/{cgGroupId}")
+	public ResponseEntity downloadFromCv1(@PathVariable Integer cgGroupId) {
+		try {
+			String cvresume=associateService.getFileNameById2(cgGroupId);
+			String type=URLConnection.guessContentTypeFromName(cvresume);
+			byte[] file=associateService.getFileById2(cgGroupId);
+			return ResponseEntity.ok()
+					.contentType(MediaType.parseMediaType(type))
+					.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; fileName=\""+cvresume+"\"")
+					.body(file);
+		}catch(AssociateException e) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,e.getMessage());
 		}
 	}

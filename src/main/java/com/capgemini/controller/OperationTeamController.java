@@ -1,19 +1,15 @@
 package com.capgemini.controller;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.InputStreamResource;
-
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.List;
 
-import org.apache.commons.math3.geometry.Space;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,16 +21,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.capgemini.entity.AssociatePersonal;
 import com.capgemini.entity.AssociateProf;
-import com.capgemini.exception.AssociateException;
 import com.capgemini.exception.OperationException;
 import com.capgemini.service.OperationService;
 import com.capgemini.util.ExcelGenerator;
 
 import lombok.extern.slf4j.Slf4j;
-
-import com.capgemini.service.OperationService;
 
 @RestController
 @CrossOrigin("*")
